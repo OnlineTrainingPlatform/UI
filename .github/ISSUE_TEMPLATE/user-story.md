@@ -7,4 +7,4 @@ assignees: ''
 
 ---
 
-This template is used in the UI repo since the user stories are targeted towards our users
+Add tasks related to the user story
