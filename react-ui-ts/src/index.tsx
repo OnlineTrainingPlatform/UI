@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { LandingPage } from './Pages/LandingPage';
+import { ExercisePage } from './Pages/ExercisePage';
+import { StatisticsPage } from './Pages/StatisticsPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,6 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App />
+    <LandingPage />
+    <ExercisePage/>
+    <StatisticsPage />
   </React.StrictMode>
 );
 
