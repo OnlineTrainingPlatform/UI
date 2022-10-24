@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { LandingPage } from './Pages/LandingPage';
 import { ExercisePage } from './Pages/ExercisePage';
@@ -12,7 +11,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
     <LandingPage />
     <ExercisePage/>
     <StatisticsPage />
