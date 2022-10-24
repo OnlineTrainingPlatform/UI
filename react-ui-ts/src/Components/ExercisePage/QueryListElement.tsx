@@ -1,4 +1,4 @@
 type Props = {query:string}
-export const QueryListElemnt = ({query}:Props) => {
+export const QueryListElement = ({query}:Props) => {
     return (<div><p>{query}</p></div>)
 }

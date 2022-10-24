@@ -1,5 +1,5 @@
 import { ScrollableList } from "../ScrollableList"
-import { QueryListElemnt as QueryListElement } from "./QueryListElement"
+import { QueryListElement } from "./QueryListElement"
 export const Queries = () =>
 {
     const queryList = [<QueryListElement query="b"/>, <QueryListElement query="c"/>]
