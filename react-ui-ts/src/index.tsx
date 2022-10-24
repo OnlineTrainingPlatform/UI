@@ -1,19 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { LandingPage } from './Pages/LandingPage';
-import { ExercisePage } from './Pages/ExercisePage';
-import { StatisticsPage } from './Pages/StatisticsPage';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { LandingPage } from "./Pages/LandingPage";
+import { ExercisePage } from "./Pages/ExercisePage";
+import { StatisticsPage } from "./Pages/StatisticsPage";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="exercise" element={<ExercisePage />} />
+      <Route path="statistics" element={<StatisticsPage />} />
+    </>
+  )
+);
+
 root.render(
   <React.StrictMode>
-    <LandingPage />
-    <ExercisePage/>
-    <StatisticsPage />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
