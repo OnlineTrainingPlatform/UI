@@ -1,3 +1,3 @@
 export const PassedStatistics = () => {
-    return(<h2>500/600 Passed</h2>)
-}
+  return <h2>500/600 Passed</h2>;
+};
