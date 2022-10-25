@@ -1,5 +1,5 @@
 import { ExerciseTitle } from "../Components/ExercisePage/ExerciseTitle"
-import { ScrollableList } from "../Components/ScrollableList"
+import { ScrollableList } from "../Components/Shared/ScrollableList"
 import { HandInTimeStatistics } from "../Components/StatisticsPage/HandInTimeStatistics"
 import { PassedStatistics } from "../Components/StatisticsPage/PassedStatistics"
 import { QueryStatisticsListElement } from "../Components/StatisticsPage/QueryStatisticsListElement"
