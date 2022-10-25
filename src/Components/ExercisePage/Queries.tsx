@@ -1,4 +1,4 @@
-import { ScrollableList } from "../ScrollableList"
+import { ScrollableList } from "../Shared/ScrollableList"
 import { QueryListElement } from "./QueryListElement"
 export const Queries = () =>
 {
