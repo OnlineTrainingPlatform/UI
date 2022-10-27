@@ -1,5 +1,5 @@
 import { Description } from '../Components/ExercisePage/Description';
-import { ExerciseTitle } from '../Components/ExercisePage/ExerciseTitle';
+import { ExerciseTitle } from '../Components/Shared/ExerciseTitle';
 import { Queries } from '../Components/ExercisePage/Queries';
 import { Solution } from '../Components/ExercisePage/Solution';
 
