@@ -1,4 +1,3 @@
-export const Solution = () =>
-{
-    return (<p>Solution</p>)
-}
+export const Solution = () => {
+  return <p>Solution</p>;
+};

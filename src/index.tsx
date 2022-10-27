@@ -1,19 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
-} from "react-router-dom";
-import "./index.css";
-import reportWebVitals from "./reportWebVitals";
-import { LandingPage } from "./Pages/LandingPage";
-import { ExercisePage } from "./Pages/ExercisePage";
-import { StatisticsPage } from "./Pages/StatisticsPage";
+} from 'react-router-dom';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import { LandingPage } from './Pages/LandingPage';
+import { ExercisePage } from './Pages/ExercisePage';
+import { StatisticsPage } from './Pages/StatisticsPage';
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById('root') as HTMLElement,
 );
 
 const router = createBrowserRouter(
@@ -22,14 +22,14 @@ const router = createBrowserRouter(
       <Route path="/" element={<LandingPage />} />
       <Route path="exercise" element={<ExercisePage />} />
       <Route path="statistics" element={<StatisticsPage />} />
-    </>
-  )
+    </>,
+  ),
 );
 
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
