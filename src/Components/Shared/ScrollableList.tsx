@@ -5,7 +5,7 @@ export const ScrollableList = ({ displayList }: Props) => {
   return (
     <>
       {displayList.map((displayElement: JSX.Element) => {
-        return (<li>{displayElement}</li>);
+        return <li>{displayElement}</li>;
       })}
     </>
   );
