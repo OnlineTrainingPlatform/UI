@@ -19,8 +19,12 @@ export const Solution = () => {
         className="w-32 h-32 border-dotted mt-10 m-auto hover:bg-slate-300 text-center relative"
         onClick={handleClick}
       >
-        {hiddenFileInput.current?.files && <Plus size={32} className='absolute top-12 right-12'/>}
-        {!hiddenFileInput.current?.files && <FileArrowUp size={32} className='absolute top-12 right-12'/>}
+        {hiddenFileInput.current?.files && (
+          <Plus size={32} className="absolute top-12 right-12" />
+        )}
+        {!hiddenFileInput.current?.files && (
+          <FileArrowUp size={32} className="absolute top-12 right-12" />
+        )}
         <input
           className="hidden"
           type="file"
