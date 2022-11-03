@@ -20,7 +20,8 @@ export const useGetAllQueries = () => {
       <QueryListElement query="A[] B.final -> C.final_state" result={true} />,
       <QueryListElement query="A<> B.deadlock -> C.deadlock" result={true} />,
       <QueryListElement query="A[] B.final -> C.final_state" result={true} />,
-  ])}
+    ]);
+  }
 
   return queries;
 };
