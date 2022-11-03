@@ -4,6 +4,7 @@ interface Props {
   query: string;
   result: boolean;
 }
+
 export const QueryListElement = ({ query, result }: Props) => {
   return (
     <div className="border-solid border-gray-700 mb-1 bg-gray-200 flex flex-row relative w-full pl-2 h-8 text-center">

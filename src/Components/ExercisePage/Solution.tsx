@@ -1,15 +1,20 @@
 import { FileArrowUp, Plus } from 'phosphor-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export const Solution = () => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
+  const [file, setFile] = useState<File>();
 
   const handleClick = () => {
-    if (hiddenFileInput.current === null) return undefined;
+    if (!hiddenFileInput.current) {
+      return undefined;
+    }
     hiddenFileInput.current.click();
   };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return undefined;
+    setFile(e.target.files[0]);
     console.log(e.target.files[0]);
   };
 
@@ -19,10 +24,9 @@ export const Solution = () => {
         className="w-32 h-32 border-dotted mt-10 m-auto hover:bg-slate-300 text-center relative"
         onClick={handleClick}
       >
-        {hiddenFileInput.current?.files && (
+        {!file ? (
           <Plus size={32} className="absolute top-12 right-12" />
-        )}
-        {!hiddenFileInput.current?.files && (
+        ) : (
           <FileArrowUp size={32} className="absolute top-12 right-12" />
         )}
         <input

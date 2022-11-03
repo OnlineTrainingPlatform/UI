@@ -12,6 +12,10 @@ export const useGetExerciseByID = async (id: string | undefined) => {
     .then((res) => res.json())
     .then((data) => {
       setResponse(data);
+    })
+    .catch((e) => {
+      console.error(e);
     });
+
   return response;
 };

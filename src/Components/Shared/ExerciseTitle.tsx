@@ -1,5 +1,5 @@
 interface Props {
-  title: string | undefined; // undefined allowed only because useParams does not guarantee a string.
+  title: string | undefined; // undefined allowed only because useParams does not that the binding on the object exists.
   breadcrumb: string;
 }
 
