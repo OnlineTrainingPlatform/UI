@@ -1,16 +1,18 @@
 import { ChartBar, Play } from 'phosphor-react';
 import { useNavigate } from 'react-router-dom';
-import { MouseEvent } from 'react';
+import { MouseEvent, useState } from 'react';
 
 const EXERCISE: string = 'exercise';
 type Props = { title: string; description: string };
 
+
 export const ExerciseListElement = ({ title, description }: Props) => {
   let navigate = useNavigate();
+  const [exerciseID, setExerciseID] = useState("id");
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     e.currentTarget.id === EXERCISE
-      ? navigate(EXERCISE)
-      : navigate('statistics');
+      ? navigate(`exercises/${exerciseID}`)
+      : navigate(`statistics/${exerciseID}`);
   };
   return (
     <div className="p-1 border-solid grid grid-cols-2 divide-x">

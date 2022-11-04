@@ -22,7 +22,7 @@ const router = createBrowserRouter(
     <>
       <Route path="" element={<Layout />}>
         <Route index element={<LandingPage />} />
-        <Route path="exercise">
+        <Route path="exercises">
           <Route path=":exerciseID" element={<ExercisePage />} />
         </Route>
         <Route path="statistics">
