@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import { LandingPage } from './Pages/LandingPage';
 import { ExercisePage } from './Pages/ExercisePage';
 import { StatisticsPage } from './Pages/StatisticsPage';
+import { Layout } from './Components/Layout/Layout';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -19,9 +20,15 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="exercise" element={<ExercisePage />} />
-      <Route path="statistics" element={<StatisticsPage />} />
+      <Route path="" element={<Layout />}>
+        <Route index element={<LandingPage />} />
+        <Route path="exercise">
+          <Route path=":exerciseID" element={<ExercisePage />} />
+        </Route>
+        <Route path="statistics">
+          <Route path=":statisticsID" element={<StatisticsPage />} />
+        </Route>
+      </Route>
     </>,
   ),
 );
