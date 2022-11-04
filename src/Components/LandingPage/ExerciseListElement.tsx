@@ -10,9 +10,7 @@ export const ExerciseListElement = ({ title, description }: Props) => {
   let navigate = useNavigate();
   const [exerciseID, setExerciseID] = useState('id');
   const handleClick = (e: MouseEvent<HTMLElement>) => {
-    e.currentTarget.id === EXERCISE
-      ? navigate(`exercises/${exerciseID}`)
-      : navigate(`statistics/${exerciseID}`);
+   navigate(`${e.currentTarget.id}/${exerciseID}`);
   };
   return (
     <div className="space-x-12 p-1 border-solid grid grid-cols-2 divide-x">
