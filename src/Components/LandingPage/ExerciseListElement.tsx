@@ -23,7 +23,7 @@ export const ExerciseListElement = ({ title, description }: Props) => {
       <div className="space-x-4 pl-10 pt-12">
         <button
           type="button"
-          id="exercise"
+          id="exercises"
           title="Go to exercises"
           onClick={handleClick}
           className="bg-white hover:bg-gray-100 text-gray-800"
