@@ -5,10 +5,9 @@ import { MouseEvent, useState } from 'react';
 const EXERCISE: string = 'exercise';
 type Props = { title: string; description: string };
 
-
 export const ExerciseListElement = ({ title, description }: Props) => {
   let navigate = useNavigate();
-  const [exerciseID, setExerciseID] = useState("id");
+  const [exerciseID, setExerciseID] = useState('id');
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     e.currentTarget.id === EXERCISE
       ? navigate(`exercises/${exerciseID}`)
