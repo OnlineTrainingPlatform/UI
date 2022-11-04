@@ -1,6 +1,6 @@
 type Props = {
   className?: string;
-  createDisplayElements: (elems: object[]) => JSX.Element[];
+  createDisplayElements: (elems: any[]) => JSX.Element[];
   elements: object[] | undefined ;
 };
 export const ScrollableList: React.FC<Props> = ({

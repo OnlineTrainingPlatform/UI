@@ -1,32 +1,11 @@
 import { ExerciseListElement } from '../Components/LandingPage/ExerciseListElement';
 import { ScrollableList } from '../Components/Shared/ScrollableList';
+import { useGetAllExercises } from '../Hooks/getAllExercises';
+import { createExerciseListElements } from '../Utils/createExerciseListElements';
+
 export const LandingPage = () => {
-  const listView = [
-    <ExerciseListElement
-      title="Beginner Transitions"
-      description="Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula"
-    />,
-    <ExerciseListElement
-      title="Intermediate Transitions"
-      description="Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula"
-    />,
-    <ExerciseListElement
-      title="Beginner Locations"
-      description="Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula"
-    />,
-    <ExerciseListElement
-      title="Intermediate Transitions"
-      description="Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula"
-    />,
-    <ExerciseListElement
-      title="Beginner Transitions"
-      description="Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula"
-    />,
-    <ExerciseListElement
-      title="Intermediate Transitions"
-      description="Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula"
-    />,
-  ];
+  const exercises = useGetAllExercises();
+
   return (
     <>
       <div className="grid grid-cols-2 divide-x flex-wrap">
@@ -38,7 +17,7 @@ export const LandingPage = () => {
         </div>
         <div className="pt-10">
           <h3>Exercises</h3>
-          <ScrollableList displayList={listView} />
+          <ScrollableList createDisplayElements={createExerciseListElements} elements={exercises} />
         </div>
       </div>
     </>
