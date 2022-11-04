@@ -15,7 +15,7 @@ export const useGetAllExercises = () => {
   //     console.error(e);
   //   });
   if (!exercises){
-    setExercises([{id:"0", title:"Beginner Transitions", description:"Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula"}, {id:"1", title:"Intermediate Transitions", description:"Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula"}, {id:"2", title:"Advanced Transitions", description:"Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula"}, {id:"2", title:"Advanced Transitions", description:"Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula"}]);
+    setExercises([{id:"0", title:"Beginner Transitions", description:"Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula", queries:[]}, {id:"1", title:"Intermediate Transitions", description:"Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula", queries:[]}, {id:"2", title:"Advanced Transitions", description:"Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula", queries:[]}, {id:"2", title:"Advanced Transitions", description:"Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Nunc a fermentum ligula", queries:[]}]);
   }
   return exercises;
 };

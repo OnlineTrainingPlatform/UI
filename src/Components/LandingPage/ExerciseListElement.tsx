@@ -14,6 +14,7 @@ export const ExerciseListElement = ({ title, description }: Props) => {
       ? navigate(`exercises/${exerciseID}`)
       : navigate(`statistics/${exerciseID}`);
   };
+  
   return (
     <div className="space-x-12 p-1 border-solid grid grid-cols-2 divide-x">
       <div className='px-2'>
