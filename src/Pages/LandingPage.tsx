@@ -17,7 +17,10 @@ export const LandingPage = () => {
         </div>
         <div className="pt-10">
           <h3>Exercises</h3>
-          <ScrollableList createDisplayElements={createExerciseListElements} elements={exercises} />
+          <ScrollableList
+            createDisplayElements={createExerciseListElements}
+            elements={exercises}
+          />
         </div>
       </div>
     </>
