@@ -12,7 +12,7 @@ export const ExerciseListElement = ({ title, description }: Props) => {
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     navigate(`${e.currentTarget.id}/${exerciseID}`);
   };
-  
+
   return (
     <div className="space-x-12 p-1 border-solid grid grid-cols-2 divide-x">
       <div className="px-2">
