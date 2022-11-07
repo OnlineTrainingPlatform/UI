@@ -4,7 +4,7 @@ import { MouseEvent } from 'react';
 
 type Props = { title: string; description: string };
 
-const exerciseID = "id"  
+const exerciseID = 'id';
 
 export const ExerciseListElement = ({ title, description }: Props) => {
   let navigate = useNavigate();
