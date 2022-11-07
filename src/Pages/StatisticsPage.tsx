@@ -20,7 +20,6 @@ export const StatisticsPage = () => {
         title={statisticsID}
         breadcrumb={STATISTICS_PAGE_BREADCRUMB}
       />
-      <ScrollableList displayList={statisticsList} />
       <PassedStatistics />
       <HandInTimeStatistics />
     </>
