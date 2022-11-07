@@ -1,7 +1,7 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 export const HandInTimeStatistics = () => {
-  const today = dayjs().format("HH:MM")
+  const today = dayjs().format('HH:MM');
   return (
     <div className="border-solid mt-6">
       <div className="w-full p-auto text-center">
