@@ -1,5 +1,3 @@
-// import { useParams } from 'react-router-dom';
-// import { useGetExerciseByID } from '../Hooks/getExerciseByID';
 import { Description } from '../Components/ExercisePage/Description';
 import { ExerciseTitle } from '../Components/Shared/ExerciseTitle';
 import { Queries } from '../Components/ExercisePage/Queries';
@@ -9,8 +7,6 @@ import { Exercise } from '../Datatypes/datatypes';
 const EXERCISE_PAGE_BREADCRUMB = 'Exercise Page';
 
 export const ExercisePage = () => {
-  // const { exerciseID } = useParams();
-  // const exercise = useGetExerciseByID(exerciseID);
   const exercise: Exercise = {
     id: 'erghq4tjq309g4qnrognq',
     description:

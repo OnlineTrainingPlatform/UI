@@ -1,6 +1,6 @@
 import { QueryStatisticsListElement } from '../Components/StatisticsPage/QueryStatisticsListElement';
 
-export const createQueryListElements = (queries: any[]) => {
+export const createQueryStatisticsListElements = (queries: any[]) => {
   if (!queries) {
     return [<></>];
   }

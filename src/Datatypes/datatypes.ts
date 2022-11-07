@@ -5,6 +5,8 @@ export type Exercise = {
   queries: Query[];
 };
 
-type Query = {
+export type Query = {
   query: string;
+  result?: boolean;
+  successRate?: number;
 };
