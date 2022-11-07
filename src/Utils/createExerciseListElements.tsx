@@ -1,6 +1,5 @@
 import { ExerciseListElement } from '../Components/LandingPage/ExerciseListElement';
 import { Exercise } from '../Datatypes/datatypes';
-import { useGetAllExercises } from '../Hooks/getAllExercises';
 
 export const createExerciseListElements = (exercises: Exercise[]) => {
   if (!exercises) {

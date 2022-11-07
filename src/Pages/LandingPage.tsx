@@ -1,4 +1,3 @@
-import { ExerciseListElement } from '../Components/LandingPage/ExerciseListElement';
 import { ScrollableList } from '../Components/Shared/ScrollableList';
 import { useGetAllExercises } from '../Hooks/getAllExercises';
 import { createExerciseListElements } from '../Utils/createExerciseListElements';
