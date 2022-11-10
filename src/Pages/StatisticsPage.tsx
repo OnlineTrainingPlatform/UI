@@ -8,7 +8,7 @@ const STATISTICS_PAGE_BREADCRUMB = 'Statistics Page';
 
 export const StatisticsPage = () => {
   // const { statisticsID } = useParams();
-  const exercise = {title: "Title of the exercise"};
+  const exercise = { title: 'Title of the exercise' };
   // const queries = useGetQueriesByID(statisticsID);
   const queries = [
     { query: 'A<> B.deadlock -> C.deadlock', querySuccessRate: 15 },

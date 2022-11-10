@@ -6,7 +6,6 @@ type Props = { title: string; description: string };
 
 const exerciseID = 'id';
 
-
 /**
  * Component that renders a single exercise
  * @returns HTML
