@@ -8,7 +8,7 @@ const STATISTICS_PAGE_BREADCRUMB = 'Statistics Page';
 
 export const StatisticsPage = () => {
   // const { statisticsID } = useParams();
-  const statisticsID = 'Jakob';
+  const exercise = {title: "Title of the exercise"};
   // const queries = useGetQueriesByID(statisticsID);
   const queries = [
     { query: 'A<> B.deadlock -> C.deadlock', querySuccessRate: 15 },
@@ -22,7 +22,7 @@ export const StatisticsPage = () => {
   return (
     <>
       <ExerciseTitle
-        title={statisticsID}
+        title={exercise.title}
         breadcrumb={STATISTICS_PAGE_BREADCRUMB}
       />
       <div className="w-full flex flex-row h-5/6">

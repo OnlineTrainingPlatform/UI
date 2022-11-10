@@ -5,6 +5,10 @@ interface Props {
   result: boolean;
 }
 
+/**
+ * Component that renders a single query and its result.
+ * @returns HTML
+ */
 export const QueryListElement = ({ query, result }: Props) => {
   return (
     <div className="border-solid border-gray-700 mb-1 bg-gray-200 flex flex-row relative pl-2 leading-8 text-center">

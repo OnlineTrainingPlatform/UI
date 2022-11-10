@@ -8,5 +8,6 @@ export type Exercise = {
 export type Query = {
   query: string;
   result?: boolean;
-  successRate?: number;
 };
+
+export type QueryStats = Query & { successRate: number };

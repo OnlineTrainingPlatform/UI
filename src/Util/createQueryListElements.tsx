@@ -1,7 +1,13 @@
 import { QueryListElement } from '../Components/ExercisePage/QueryListElement';
 import { Query } from '../Datatypes/datatypes';
 
-export const createQueryListElements = (queries: any[]) => {
+
+/**
+ * Creates JSX elements of type QueryListElement from queries
+ * @param queries list of queries fetched from the Submissions microservice
+ * @returns list of JSX elements
+ */
+export const createQueryListElements = (queries: Query[]) => {
   if (!queries) {
     return [<></>];
   }

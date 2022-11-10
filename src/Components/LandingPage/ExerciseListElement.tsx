@@ -6,6 +6,11 @@ type Props = { title: string; description: string };
 
 const exerciseID = 'id';
 
+
+/**
+ * Component that renders a single exercise
+ * @returns HTML
+ */
 export const ExerciseListElement = ({ title, description }: Props) => {
   let navigate = useNavigate();
 

@@ -3,12 +3,16 @@ import { useState } from 'react';
 
 interface Props {
   query: string;
-  querySuccessRate: number;
+  successRate: number;
 }
 
+/**
+ * Component that renders a query statistic on the Statistics Page
+ * @returns HTML
+ */
 export const QueryStatisticsListElement = ({
   query,
-  querySuccessRate,
+  successRate,
 }: Props) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -27,7 +31,7 @@ export const QueryStatisticsListElement = ({
           <p className="pl-10">{query}</p>
         </div>
         <div className="flex w-1/6">
-          <p className="pl-3">{querySuccessRate}%</p>
+          <p className="pl-3">{successRate}%</p>
         </div>
         <div
           className="border-0 border-l-2 border-solid flex w-1/6 right-0 relative"
@@ -47,16 +51,16 @@ export const QueryStatisticsListElement = ({
           <div className="border-solid border-1 border-t-0 h-20 flex flex-col overflow-auto">
             <div className="flex">
               <Check size={12} className="my-[10px] mx-2" />
-              <p className="p-0 leading-3 my-3">{`${querySuccessRate} Successes`}</p>
+              <p className="p-0 leading-3 my-3">{`${successRate} Successes`}</p>
             </div>
             <div className="flex">
               <X size={12} className="my-[10px] mx-2" />
-              <p className="p-0 leading-3 my-3">{`${querySuccessRate} Failures`}</p>
+              <p className="p-0 leading-3 my-3">{`${successRate} Failures`}</p>
             </div>
             <div className="flex">
               <HashStraight size={12} className="my-[10px] mx-2" />
               <p className="p-0 leading-3 my-3">{`${
-                querySuccessRate + querySuccessRate
+                successRate + successRate
               } Total Attempts`}</p>
             </div>
           </div>

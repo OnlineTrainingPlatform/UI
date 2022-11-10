@@ -1,5 +1,10 @@
 import { useState } from 'react';
 
+/**
+ * React Hook that is in charge of fetching queries from a single exercise id
+ * @param id an exercise ID
+ * @returns a list of queries
+ */
 export const useGetQueriesByID = (id: string) => {
   const [queries, setQueries] = useState<object[]>();
 

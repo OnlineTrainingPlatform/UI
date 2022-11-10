@@ -1,6 +1,11 @@
 import { useGetQueriesByID } from '../../Hooks/getQueriesByID';
 import { createQueryListElements } from '../../Util/createQueryListElements';
 import { ScrollableList } from '../Shared/ScrollableList';
+
+/**
+ * Component in charge of rendering the right side of the Exercise Page
+ * @returns HTML and React Components
+ */
 export const Queries = () => {
   const queryList = useGetQueriesByID('id');
   return (

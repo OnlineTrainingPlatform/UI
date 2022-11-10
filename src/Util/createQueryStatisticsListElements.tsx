@@ -1,14 +1,21 @@
 import { QueryStatisticsListElement } from '../Components/StatisticsPage/QueryStatisticsListElement';
+import { QueryStats } from '../Datatypes/datatypes';
 
-export const createQueryStatisticsListElements = (queries: any[]) => {
+
+/**
+ * Creates JSX elements of type QueryStatisticsListElement from queries
+ * @param queries list of queries fetched from the Submissions microservice
+ * @returns list of JSX elements
+ */
+export const createQueryStatisticsListElements = (queries: QueryStats[]) => {
   if (!queries) {
     return [<></>];
   }
-  return queries.map((elem: any) => {
+  return queries.map((elem: QueryStats) => {
     return (
       <QueryStatisticsListElement
         query={elem.query}
-        querySuccessRate={elem.querySuccessRate}
+        successRate={elem.successRate}
       />
     );
   });
