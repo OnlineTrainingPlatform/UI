@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import { Exercise } from '../Datatypes/datatypes';
-import { createExerciseListElements } from '../Utils/createExerciseListElements';
-
-const URL_API = 'localhost:8000';
 
 export const useGetAllExercises = () => {
   const [exercises, setExercises] = useState<Exercise[] | undefined>();

@@ -1,3 +1,9 @@
 export const PassedStatistics = () => {
-  return <h2>500/600 Passed</h2>;
+  return (
+    <div className="border-solid">
+      <div className="w-full p-8">
+        <h2>200 / 400 passed</h2>
+      </div>
+    </div>
+  );
 };

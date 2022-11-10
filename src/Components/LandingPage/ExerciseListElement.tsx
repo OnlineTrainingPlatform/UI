@@ -1,14 +1,18 @@
 import { ChartBar, Play } from 'phosphor-react';
 import { useNavigate } from 'react-router-dom';
-import { MouseEvent, useState } from 'react';
-
-const EXERCISE: string = 'exercise';
+import { MouseEvent } from 'react';
 
 type Props = { title: string; description: string };
 
+const exerciseID = 'id';
+
+/**
+ * Component that renders a single exercise
+ * @returns HTML
+ */
 export const ExerciseListElement = ({ title, description }: Props) => {
   let navigate = useNavigate();
-  const [exerciseID, setExerciseID] = useState('id');
+
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     navigate(`${e.currentTarget.id}/${exerciseID}`);
   };
