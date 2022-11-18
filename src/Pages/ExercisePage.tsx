@@ -29,7 +29,7 @@ export const ExercisePage = () => {
     if (!exercise || !file) return;
 
     console.log(exercise.queries);
-    
+
     const body = {
       solution: await file.text(),
       queries: exercise.queries,
