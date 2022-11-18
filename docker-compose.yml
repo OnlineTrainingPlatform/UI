@@ -1,0 +1,123 @@
+version: '3.9'
+
+services:
+  traefik:
+    image: "traefik:v2.4"
+    depends_on:
+      - whoami
+      - exercises
+      - verifiers
+      - submissions
+    command:
+      - "--global.sendanonymoususage=false"
+      - "--global.checknewversion=true"
+      # API
+      - "--api.insecure=true"
+      - "--api.dashboard=true"
+      - "--api.debug=true"
+      # Providers
+      - "--providers.docker"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.network=ui_edge"
+      # Entrypoints
+      - "--entrypoints.web.address=:80"
+      # Logging
+      - "--log=true"
+      - "--accesslog=true"
+    ports:
+      - "80:80" # web entrypoint
+      - "8090:8080" # Dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - edge
+
+  whoami:
+    image: "traefik/whoami"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Path(`/whoami/{exercise:([a-zA-Z0-9]+(-)*)+}/submissions`)"
+      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.docker.network=ui_edge"
+    networks:
+      - edge
+
+  submissions:
+    image: ghcr.io/onlinetrainingplatform/submissions:sha-97913ec
+    depends_on:
+      - mongo
+      - exercises
+      - verifiers
+    environment: 
+      - PORT=80
+      - API_PREFIX=/api/v1
+      - MONGO_CONNECTION_STRING=mongodb://root:rootpassword@mongo:27017/?authMechanism=DEFAULT
+      - MONGO_DOCUMENT_NAME=submissions
+      - MONGO_DB_NAME=submissions
+      - EXERCISE_API_BASE_ROUTE=http://exercises:80
+      - VERIFIERS_API_BASE_ROUTE=http://verifiers:80
+      - STATUS_PATH=/api/v1/status
+      - HOST=0.0.0.0
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.submissions.rule=Path(`/api/v1/exercises/{exercise:([a-zA-Z0-9]+(-)*)+}/submissions`)"
+      - "traefik.http.routers.submissions.entrypoints=web"
+      - "traefik.docker.network=ui_edge"
+    networks:
+      - backend
+      - edge
+
+  exercises:
+    image: ghcr.io/onlinetrainingplatform/exercises:sha-67e7043
+    depends_on:
+      - mongo
+    environment: 
+      - PORT=80
+      - API_PREFIX=/api/v1
+      - MONGO_CONNECTION_STRING=mongodb://root:rootpassword@mongo:27017/?authMechanism=DEFAULT
+      - MONGO_DOCUMENT_NAME=exercises
+      - MONGO_DB_NAME=exercises
+      - HOST=0.0.0.0
+      - STATUS_PATH=/api/v1/status
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.exercises.rule=Path(`/api/v1/exercises`) || Path(`/api/v1/exercises/{exercise:([a-zA-Z0-9]+(-)*)+}`)"
+      - "traefik.http.routers.exercises.entrypoints=web"
+      - "traefik.docker.network=ui_edge"
+    networks:
+      - backend
+      - edge
+
+  verifiers:
+    image: ghcr.io/onlinetrainingplatform/verifiers:sha-9a25c0a
+    environment: 
+      - PORT=80
+      - API_PREFIX=/api/v1
+      - HOST=0.0.0.0
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.verifiers.rule=Path(`/api/v1/verifiers/{verifier:[a-z]*}`)"
+      - "traefik.http.routers.verifiers.entrypoints=web"
+      - "traefik.docker.network=ui_edge"
+    networks:
+      - backend
+      - edge
+
+  mongo:
+    image: mongo:6.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - backend
+
+networks:
+  backend:
+  edge:
+
+volumes:
+  mongodb_data_container:
