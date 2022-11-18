@@ -14,7 +14,7 @@ export const ExercisePage = () => {
 
   useEffect(() => {
     if (!exerciseID) return;
-    fetch(`api/v1/exercises/${exerciseID}`)
+    fetch(`/api/v1/exercises/${exerciseID}`)
       .then(async (res) => await res.json())
       .then((data) => {
         setExercise(data);
