@@ -1,9 +1,17 @@
 import { ScrollableList } from '../Components/Shared/ScrollableList';
-import { useGetAllExercises } from '../Hooks/getAllExercises';
 import { createExerciseListElements } from '../Utils/createExerciseListElements';
+import { useEffect, useState } from 'react';
 
 export const LandingPage = () => {
-  const exercises = useGetAllExercises();
+  const [exercises, setExercises] = useState([<p>loading</p>]);
+
+  useEffect(() => {
+    fetch('api/v1/exercises')
+      .then(async (res) => await res.json())
+      .then((data) => {
+        setExercises(data);
+      });
+  }, []);
 
   return (
     <>
@@ -16,6 +24,7 @@ export const LandingPage = () => {
         </div>
         <div className="pt-10">
           <h3>Exercises</h3>
+
           <ScrollableList
             createDisplayElements={createExerciseListElements}
             elements={exercises}

@@ -16,8 +16,15 @@ export const createExerciseListElements = (exercises: Exercise[]) => {
           <ExerciseListElement
             title={exercise.title}
             description={exercise.description}
+            exerciseID={exercise.id}
           />
         );
       })
-    : [<ExerciseListElement title="Loading" description="Loading" />];
+    : [
+        <ExerciseListElement
+          title="Loading"
+          description="Loading"
+          exerciseID="loading"
+        />,
+      ];
 };
