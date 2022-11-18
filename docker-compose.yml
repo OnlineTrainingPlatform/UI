@@ -4,7 +4,6 @@ services:
   traefik:
     image: "traefik:v2.4"
     depends_on:
-      - whoami
       - exercises
       - verifiers
       - submissions
