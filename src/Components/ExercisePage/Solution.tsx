@@ -1,9 +1,13 @@
 import { FileArrowUp, Plus } from 'phosphor-react';
-import { useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useRef } from 'react';
 
-export const Solution = () => {
+interface Props {
+  file: File | undefined;
+  setFile: Dispatch<SetStateAction<File | undefined>>;
+}
+
+export const Solution = ({ file, setFile }: Props) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
-  const [file, setFile] = useState<File>();
 
   const handleClick = () => {
     if (!hiddenFileInput.current) {
