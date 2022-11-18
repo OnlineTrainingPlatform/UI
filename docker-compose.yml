@@ -32,16 +32,6 @@ services:
     networks:
       - edge
 
-  whoami:
-    image: "traefik/whoami"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Path(`/whoami/{exercise:([a-zA-Z0-9]+(-)*)+}/submissions`)"
-      - "traefik.http.routers.whoami.entrypoints=web"
-      - "traefik.docker.network=ui_edge"
-    networks:
-      - edge
-
   submissions:
     image: ghcr.io/onlinetrainingplatform/submissions:sha-97913ec
     depends_on:
