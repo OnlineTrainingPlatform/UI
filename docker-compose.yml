@@ -78,8 +78,7 @@ services:
       - edge
 
   verifiers:
-    # image: ghcr.io/onlinetrainingplatform/verifiers:sha-67b2791
-    image: verifiers-service:dev
+    image: ghcr.io/onlinetrainingplatform/verifiers:sha-67b2791
     environment: 
       - PORT=80
       - API_PREFIX=/api/v1
