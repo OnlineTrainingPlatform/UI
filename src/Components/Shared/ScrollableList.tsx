@@ -4,7 +4,6 @@ type Props = {
   elements: object[] | undefined;
 };
 
-
 /**
  * A generic component that renders a list of elements.
  * @param className optional, adds tailwind css to list
