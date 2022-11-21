@@ -5,8 +5,7 @@ import { MouseEvent } from 'react';
 type Props = { title: string; description: string; exerciseID: string };
 
 /**
- * Component that renders a single exercise
- * @returns HTML
+ * Component that renders a single exercise on the landing page
  */
 export const ExerciseListElement: React.FC<Props> = ({
   title,

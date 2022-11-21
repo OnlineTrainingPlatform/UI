@@ -6,6 +6,11 @@ interface Props {
   setFile: Dispatch<SetStateAction<File | undefined>>;
 }
 
+/**
+ * JSX.Element that renders the solution upload button
+ * @param file a state variable that stores the locally selected file
+ * @param setFile a setter function for the file state, above
+ */
 export const Solution = ({ file, setFile }: Props) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
