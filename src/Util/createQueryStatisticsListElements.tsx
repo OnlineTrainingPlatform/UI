@@ -13,6 +13,7 @@ export const createQueryStatisticsListElements = (queries: QueryStats[]) => {
   return queries.map((elem: QueryStats) => {
     return (
       <QueryStatisticsListElement
+        key={elem.query}
         query={elem.query}
         successRate={elem.successRate}
       />

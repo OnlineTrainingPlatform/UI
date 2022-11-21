@@ -1,5 +1,5 @@
 import { ScrollableList } from '../Components/Shared/ScrollableList';
-import { createExerciseListElements } from '../Utils/createExerciseListElements';
+import { createExerciseListElements } from '../Util/createExerciseListElements';
 import { useEffect, useState } from 'react';
 
 export const LandingPage = () => {

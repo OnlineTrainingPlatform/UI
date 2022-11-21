@@ -10,7 +10,10 @@ interface Props {
  * Component that renders a query statistic on the Statistics Page
  * @returns HTML
  */
-export const QueryStatisticsListElement = ({ query, successRate }: Props) => {
+export const QueryStatisticsListElement: React.FC<Props> = ({
+  query,
+  successRate,
+}) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleClick = () => {

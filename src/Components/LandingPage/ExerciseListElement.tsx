@@ -8,11 +8,11 @@ type Props = { title: string; description: string; exerciseID: string };
  * Component that renders a single exercise
  * @returns HTML
  */
-export const ExerciseListElement = ({
+export const ExerciseListElement: React.FC<Props> = ({
   title,
   description,
   exerciseID,
-}: Props) => {
+}) => {
   let navigate = useNavigate();
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {

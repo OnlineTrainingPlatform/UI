@@ -13,6 +13,7 @@ export const createQueryListElements = (queries: Query[]) => {
   return queries.map((elem: Query) => {
     return (
       <QueryListElement
+        key={elem.query}
         query={elem.query}
         result={!!elem.result ? elem.result : false}
       />

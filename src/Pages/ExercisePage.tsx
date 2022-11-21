@@ -3,15 +3,21 @@ import { useState, useEffect } from 'react';
 import { Description } from '../Components/ExercisePage/Description';
 import { ExerciseTitle } from '../Components/Shared/ExerciseTitle';
 import { Solution } from '../Components/ExercisePage/Solution';
-import { Exercise } from '../Datatypes/datatypes';
+import { Exercise, Query } from '../Datatypes/datatypes';
 import { ScrollableList } from '../Components/Shared/ScrollableList';
 import { createQueryListElements } from '../Util/createQueryListElements';
 
 const EXERCISE_PAGE_BREADCRUMB = 'Exercise Page';
 
+interface IVerifierResult {
+  queryResults: Map<string, boolean>;
+  hasSyntaxError: boolean;
+}
+
 export const ExercisePage = () => {
   const [exercise, setExercise] = useState<Exercise | undefined>();
-  const [queriesResult, setQueriesResult] = useState();
+  const [verifierResult, setVerifierResult] = useState<IVerifierResult>();
+  const [queries, setQueries] = useState<Query[]>([]);
   const [file, setFile] = useState<File>();
 
   const { exerciseID } = useParams();
@@ -27,8 +33,7 @@ export const ExercisePage = () => {
 
   const handleVerifyClick = async () => {
     if (!exercise || !file) return;
-
-    console.log(exercise.queries);
+    setQueries(exercise.queries);
 
     const body = {
       solution: await file.text(),
@@ -41,16 +46,22 @@ export const ExercisePage = () => {
       headers: { 'Content-Type': 'application/json' },
     })
       .then(async (response) => {
-        console.log(response);
         return await response.json();
       })
       .then((data) => {
-        console.log(data);
-        setQueriesResult(data);
+        setVerifierResult(data);
       })
       .catch((error) => console.log(error));
-    console.log(queriesResult);
   };
+
+  useEffect(() => {
+    if (!verifierResult) return;
+    setQueries([]);
+
+    for (const [key, value] of Object.entries(verifierResult.queryResults)) {
+      setQueries((prev) => [...prev, { query: key, result: value }]);
+    }
+  }, [verifierResult]);
 
   return (
     <>
@@ -69,7 +80,7 @@ export const ExercisePage = () => {
               <ScrollableList
                 className="h-64"
                 createDisplayElements={createQueryListElements}
-                elements={!!queriesResult ? queriesResult : exercise.queries}
+                elements={!!verifierResult ? queries : exercise.queries}
               />
               <div className="flex flex-row relative">
                 <button

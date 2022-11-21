@@ -14,6 +14,7 @@ export const createExerciseListElements = (exercises: Exercise[]) => {
     ? exercises.map((exercise) => {
         return (
           <ExerciseListElement
+            key={exercise.id}
             title={exercise.title}
             description={exercise.description}
             exerciseID={exercise.id}
@@ -22,6 +23,7 @@ export const createExerciseListElements = (exercises: Exercise[]) => {
       })
     : [
         <ExerciseListElement
+          key="loading"
           title="Loading"
           description="Loading"
           exerciseID="loading"
