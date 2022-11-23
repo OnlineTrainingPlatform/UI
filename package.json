@@ -2,7 +2,7 @@
   "name": "react-ui-ts",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:80",
+  "proxy": "http://localhost",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -30,13 +30,14 @@
     "tailwindcss": "^3.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=80 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .tsx --fix",
     "format": "npm run prettier-format",
     "audit": "npm audit --production",
+    "build-docker": "docker build -t ${npm_package_name}:${npm_package_version} -t ${npm_package_name}:dev .",
     "prettier-format": "run-script-os",
     "prettier-format:win32": "prettier --config .prettierrc \"./src/**/*.ts*\" --write",
     "prettier-format:darwin:linux": "prettier --config .prettierrc 'src/**/*.ts*' --write",
