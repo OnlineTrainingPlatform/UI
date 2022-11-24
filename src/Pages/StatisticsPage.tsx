@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ExerciseTitle } from '../Components/Shared/ExerciseTitle';
 import { ScrollableList } from '../Components/Shared/ScrollableList';
@@ -10,31 +10,18 @@ import { createQueryStatisticsListElements } from '../Util/createQueryStatistics
 const STATISTICS_PAGE_BREADCRUMB = 'Statistics Page';
 
 export const StatisticsPage = () => {
-  const [queries, setQueries] = useState<QueryStatistics[]>([
-    {
-      query_result: {
-        'A<> Jakob > Tommy.deadlock': {
-          passes: 8,
-          fails: 2,
-          total: 10,
-          pass_percentage: 80,
-        },
-      },
-      average_time: 10,
-      passed_total: { passed: 8, total: 10 },
-    },
-  ]);
+  const [queries, setQueries] = useState<QueryStatistics[]>();
   const exercise = { title: 'Title of the exercise' };
 
   const statisticsID = useParams();
 
-  // useEffect(() => {
-  //   fetch(`api/v1/exercises/${statisticsID}/statistics`)
-  //     .then(async (res) => await res.json())
-  //     .then((data: QueryStatistics) => {
-  //       setQueries([data]);
-  //     });
-  // }, [statisticsID]);
+  useEffect(() => {
+    fetch(`api/v1/exercises/${statisticsID}/statistics`)
+      .then(async (res) => await res.json())
+      .then((data: QueryStatistics) => {
+        setQueries([data]);
+      });
+  }, [statisticsID]);
 
   return (
     <>

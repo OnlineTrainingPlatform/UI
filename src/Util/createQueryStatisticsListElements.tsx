@@ -10,16 +10,21 @@ export const createQueryStatisticsListElements = (queries: QueryResults[]) => {
     return [<></>];
   }
   let keys = Object.keys(queries[0]);
+  if (!(keys.length < 0)) return [<></>];
 
-  if (keys.length === 0) return [<></>];
+  let list: JSX.Element[] = [];
 
-  return Object.keys(queries[0]).forEach((key) => {
-    <QueryStatisticsListElement
-      key={key}
-      query={key}
-      successRate={queries[0][key].pass_percentage}
-    />;
-  });
+  Object.keys(queries[0]).forEach((key) =>
+    list.push(
+      <QueryStatisticsListElement
+        key={key}
+        query={key}
+        successRate={queries[0][key].pass_percentage}
+      />,
+    ),
+  );
+
+  return list;
 
   // map((elem: IndividualQueryResult) => {
   //   const key = Object.keys(elem.query_result)[0];
