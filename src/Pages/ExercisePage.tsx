@@ -7,7 +7,7 @@ import { Solution } from '../Components/ExercisePage/Solution';
 import { Exercise, Query } from '../Datatypes/datatypes';
 import { ScrollableList } from '../Components/Shared/ScrollableList';
 import { createQueryListElements } from '../Util/createQueryListElements';
-
+import { Breadcrumbs } from '../Components/ExercisePage/Breadcrumbs';
 const EXERCISE_PAGE_BREADCRUMB = 'Exercise Page';
 
 interface IVerifierResult {
@@ -98,6 +98,7 @@ export const ExercisePage = () => {
             title={exercise.title}
             breadcrumb={EXERCISE_PAGE_BREADCRUMB}
           />
+          <Breadcrumbs/>
           <div className="w-full flex flex-row h-4/6">
             <Description description={exercise.description} />
             <Solution file={file} setFile={setFile} />
