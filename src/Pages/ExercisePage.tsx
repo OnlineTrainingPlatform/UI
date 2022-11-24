@@ -98,7 +98,7 @@ export const ExercisePage = () => {
             title={exercise.title}
             breadcrumb={EXERCISE_PAGE_BREADCRUMB}
           />
-          <Breadcrumbs/>
+          <Breadcrumbs />
           <div className="w-full flex flex-row h-4/6">
             <Description description={exercise.description} />
             <Solution file={file} setFile={setFile} />
