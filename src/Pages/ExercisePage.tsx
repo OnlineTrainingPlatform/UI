@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { Description } from '../Components/ExercisePage/Description';
 import { ExerciseTitle } from '../Components/Shared/ExerciseTitle';
 import { Solution } from '../Components/ExercisePage/Solution';
@@ -54,6 +55,31 @@ export const ExercisePage = () => {
       .catch((error) => console.log(error));
   };
 
+  const handleSubmitClick = async () => {
+    if (!exercise || !file) return;
+
+    const body = {
+      solution: await file.text(),
+    };
+
+    fetch(`/api/v1/exercises/${exerciseID}/submissions`, {
+      body: JSON.stringify(body),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(async (response) => {
+        return await response.json();
+      })
+      .then((data) => {
+        toast.success('Solution Submitted');
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error('Submission Failed');
+      });
+  };
+
   useEffect(() => {
     if (!verifierResult) return;
     setQueries([]);
@@ -89,12 +115,16 @@ export const ExercisePage = () => {
                 >
                   Run queries
                 </button>
-                <button className="fixed flex right-1 bottom-1">
+                <button
+                  onClick={handleSubmitClick}
+                  className="fixed flex right-1 bottom-1"
+                >
                   Submit solution
                 </button>
               </div>
             </div>
           </div>
+          <Toaster />
         </>
       )}
     </>
