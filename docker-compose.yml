@@ -46,7 +46,7 @@ services:
   #     - edge
 
   statistics:
-    image: ghcr.io/onlinetrainingplatform/statistics:sha-03bb2b1
+    image: ghcr.io/onlinetrainingplatform/statistics:sha-8c6652a  
     depends_on:
       - submissions
     environment:
