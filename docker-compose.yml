@@ -31,19 +31,19 @@ services:
     networks:
       - edge
 
-  ui:
-    image: react-ui-ts:dev
-    depends_on:
-      - exercises
-      - verifiers
-      - submissions
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.ui.rule=PathPrefix(`/`)"
-      - "traefik.http.routers.ui.entrypoints=web"
-      - "traefik.docker.network=ui_edge"
-    networks:
-      - edge
+  # ui:
+  #   image: react-ui-ts:dev
+  #   depends_on:
+  #     - exercises
+  #     - verifiers
+  #     - submissions
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.routers.ui.rule=PathPrefix(`/`)"
+  #     - "traefik.http.routers.ui.entrypoints=web"
+  #     - "traefik.docker.network=ui_edge"
+  #   networks:
+  #     - edge
 
   submissions:
     image: ghcr.io/onlinetrainingplatform/submissions:sha-97913ec

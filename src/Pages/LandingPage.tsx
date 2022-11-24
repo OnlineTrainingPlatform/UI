@@ -1,9 +1,10 @@
 import { ScrollableList } from '../Components/Shared/ScrollableList';
 import { createExerciseListElements } from '../Util/createExerciseListElements';
 import { useEffect, useState } from 'react';
+import { Exercise } from '../Datatypes/datatypes';
 
 export const LandingPage = () => {
-  const [exercises, setExercises] = useState([<p>loading</p>]);
+  const [exercises, setExercises] = useState<Exercise[]>();
 
   useEffect(() => {
     fetch('api/v1/exercises')
@@ -24,7 +25,6 @@ export const LandingPage = () => {
         </div>
         <div className="pt-10">
           <h3>Exercises</h3>
-
           <ScrollableList
             createDisplayElements={createExerciseListElements}
             elements={exercises}
