@@ -45,6 +45,21 @@ services:
     networks:
       - edge
 
+  statistics:
+    image: ghcr.io/onlinetrainingplatform/statistics:sha-03bb2b1
+    depends_on:
+      - submissions
+    environment:
+      - PORT=80
+      - API_PREFIX=/api/v1
+      - SUBMISSIONS_API_BASE_ROUTE=http://submissions:80
+      - HOST=0.0.0.0
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.statistics.rule=Path(`/api/v1/exercises/{exercise:([a-zA-Z0-9]+(-)*)+}/statistics`)"
+      - "traefik.http.routers.statistics.entrypoints=web"
+      - "traefik.docker.network=ui_edge"
+
   submissions:
     image: ghcr.io/onlinetrainingplatform/submissions:sha-97913ec
     depends_on:
