@@ -16,11 +16,11 @@ interface IVerifierResult {
 }
 
 export const ExercisePage = () => {
+  // React Hooks --------------
   const [exercise, setExercise] = useState<Exercise | undefined>();
   const [verifierResult, setVerifierResult] = useState<IVerifierResult>();
   const [queries, setQueries] = useState<Query[]>([]);
   const [file, setFile] = useState<File>();
-
   const { exerciseID } = useParams();
 
   /**
@@ -37,7 +37,7 @@ export const ExercisePage = () => {
   }, [exerciseID]);
 
   /**
-   * Any time the verifierResult changes, create a list
+   * Any time the verifierResult changes, update the queries results (success/failure)
    */
   useEffect(() => {
     if (!verifierResult) return;
@@ -50,6 +50,8 @@ export const ExercisePage = () => {
     }
   }, [verifierResult]);
 
+
+  // Custom functions (not hooks) --------------
 
   /**
    * A click on the 'verify queries' button triggers a verification.

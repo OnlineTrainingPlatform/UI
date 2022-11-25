@@ -4,8 +4,12 @@ import { useEffect, useState } from 'react';
 import { Exercise } from '../Datatypes/datatypes';
 
 export const LandingPage = () => {
+  // React Hooks --------------
   const [exercises, setExercises] = useState<Exercise[]>();
 
+  /**
+   * Fetch all exercises on page load
+   */
   useEffect(() => {
     fetch('api/v1/exercises')
       .then(async (res) => await res.json())
