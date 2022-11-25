@@ -1,5 +1,5 @@
 {
-  "name": "react-ui-ts",
+  "name": "YourPaal",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,6 +10,7 @@
     "@types/node": "^16.11.68",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@types/uuid": "^8.3.4",
     "dayjs": "^1.11.6",
     "eslint": "^8.26.0",
     "husky": "^8.0.1",
@@ -18,9 +19,11 @@
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.0",
     "react-router-dom": "^6.4.2",
     "run-script-os": "^1.1.6",
     "typescript": "^4.8.4",
+    "use-react-router-breadcrumbs": "^4.0.1",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
@@ -28,13 +31,14 @@
     "tailwindcss": "^3.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=80 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .tsx --fix",
     "format": "npm run prettier-format",
     "audit": "npm audit --production",
+    "build-docker": "docker build -t ${npm_package_name}:${npm_package_version} -t ${npm_package_name}:dev .",
     "prettier-format": "run-script-os",
     "prettier-format:win32": "prettier --config .prettierrc \"./src/**/*.ts*\" --write",
     "prettier-format:darwin:linux": "prettier --config .prettierrc 'src/**/*.ts*' --write",

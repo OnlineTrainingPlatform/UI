@@ -1,9 +1,22 @@
 import { ScrollableList } from '../Components/Shared/ScrollableList';
-import { useGetAllExercises } from '../Hooks/getAllExercises';
-import { createExerciseListElements } from '../Utils/createExerciseListElements';
+import { createExerciseListElements } from '../Util/createExerciseListElements';
+import { useEffect, useState } from 'react';
+import { Exercise } from '../Datatypes/datatypes';
 
 export const LandingPage = () => {
-  const exercises = useGetAllExercises();
+  // React Hooks --------------
+  const [exercises, setExercises] = useState<Exercise[]>();
+
+  /**
+   * Fetch all exercises on page load
+   */
+  useEffect(() => {
+    fetch('api/v1/exercises')
+      .then(async (res) => await res.json())
+      .then((data) => {
+        setExercises(data);
+      });
+  }, []);
 
   return (
     <>

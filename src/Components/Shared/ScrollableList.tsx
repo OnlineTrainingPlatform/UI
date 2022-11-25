@@ -3,11 +3,18 @@ type Props = {
   createDisplayElements: (elems: any[]) => JSX.Element[];
   elements: object[] | undefined;
 };
+
+/**
+ * A generic component that renders a list of elements.
+ * @param className optional, adds tailwind css to list
+ * @param createDisplayElements  function that builds the JSX Element to be rendered
+ * @param elements list of elements to be built from.
+ */
 export const ScrollableList: React.FC<Props> = ({
   className,
   createDisplayElements,
   elements,
-}: Props) => {
+}) => {
   if (!elements) {
     return null;
   }
@@ -18,7 +25,7 @@ export const ScrollableList: React.FC<Props> = ({
       className={`font-mono mr-10 border-solid flex flex-col overflow-y-auto h-3/5 ${className}`}
     >
       {list.map((displayElement: JSX.Element) => {
-        return displayElement;
+        return <div key={displayElement.key}>{displayElement}</div>;
       })}
     </div>
   );

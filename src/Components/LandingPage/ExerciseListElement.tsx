@@ -2,19 +2,20 @@ import { ChartBar, Play } from 'phosphor-react';
 import { useNavigate } from 'react-router-dom';
 import { MouseEvent } from 'react';
 
-type Props = { title: string; description: string };
-
-const exerciseID = 'id';
+type Props = { title: string; description: string; exerciseID: string };
 
 /**
- * Component that renders a single exercise
- * @returns HTML
+ * Component that renders a single exercise on the landing page
  */
-export const ExerciseListElement = ({ title, description }: Props) => {
+export const ExerciseListElement: React.FC<Props> = ({
+  title,
+  description,
+  exerciseID,
+}) => {
   let navigate = useNavigate();
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {
-    navigate(`${e.currentTarget.id}/${exerciseID}`);
+    navigate(`exercises/${exerciseID}/${e.currentTarget.id}`);
   };
 
   return (
@@ -25,8 +26,8 @@ export const ExerciseListElement = ({ title, description }: Props) => {
       </div>
       <div className="space-x-4 pl-10 pt-12">
         <button
+          id=""
           type="button"
-          id="exercises"
           title="Go to exercises"
           onClick={handleClick}
           className="bg-white hover:bg-gray-100 text-gray-800"

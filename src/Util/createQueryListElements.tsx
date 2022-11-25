@@ -4,7 +4,6 @@ import { Query } from '../Datatypes/datatypes';
 /**
  * Creates JSX elements of type QueryListElement from queries
  * @param queries list of queries fetched from the Submissions microservice
- * @returns list of JSX elements
  */
 export const createQueryListElements = (queries: Query[]) => {
   if (!queries) {
@@ -13,6 +12,7 @@ export const createQueryListElements = (queries: Query[]) => {
   return queries.map((elem: Query) => {
     return (
       <QueryListElement
+        key={elem.query}
         query={elem.query}
         result={!!elem.result ? elem.result : false}
       />

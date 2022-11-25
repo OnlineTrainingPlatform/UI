@@ -1,9 +1,18 @@
 import { FileArrowUp, Plus } from 'phosphor-react';
-import { useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useRef } from 'react';
 
-export const Solution = () => {
+interface Props {
+  file: File | undefined;
+  setFile: Dispatch<SetStateAction<File | undefined>>;
+}
+
+/**
+ * JSX.Element that renders the solution upload button
+ * @param file a state variable that stores the locally selected file
+ * @param setFile a setter function for the file state, above
+ */
+export const Solution = ({ file, setFile }: Props) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
-  const [file, setFile] = useState<File>();
 
   const handleClick = () => {
     if (!hiddenFileInput.current) {
@@ -15,7 +24,6 @@ export const Solution = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return undefined;
     setFile(e.target.files[0]);
-    console.log(e.target.files[0]);
   };
 
   return (
