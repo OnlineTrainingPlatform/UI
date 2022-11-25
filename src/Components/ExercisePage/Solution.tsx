@@ -24,7 +24,6 @@ export const Solution = ({ file, setFile }: Props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return undefined;
     setFile(e.target.files[0]);
-    console.log(e.target.files[0]);
   };
 
   return (

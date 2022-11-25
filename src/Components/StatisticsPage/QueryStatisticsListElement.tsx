@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 interface Props {
   query: string;
+  passed: number;
+  total: number;
   successRate: number;
 }
 
@@ -12,6 +14,8 @@ interface Props {
  */
 export const QueryStatisticsListElement: React.FC<Props> = ({
   query,
+  passed,
+  total,
   successRate,
 }) => {
   const [expanded, setExpanded] = useState(false);
@@ -48,20 +52,20 @@ export const QueryStatisticsListElement: React.FC<Props> = ({
       </div>
       {expanded && (
         <div className="m-2 mt-0 mb-6 h-20 ">
-          <div className="border-solid border-1 border-t-0 h-20 flex flex-col overflow-auto">
+          <div className="border-solid border-1 border-t-0 h-32 flex flex-col overflow-auto">
             <div className="flex">
               <Check size={12} className="my-[10px] mx-2" />
-              <p className="p-0 leading-3 my-3">{`${successRate} Successes`}</p>
+              <p className="p-0 leading-3 my-3">{`${passed} Successes`}</p>
             </div>
             <div className="flex">
               <X size={12} className="my-[10px] mx-2" />
-              <p className="p-0 leading-3 my-3">{`${successRate} Failures`}</p>
+              <p className="p-0 leading-3 my-3">{`${
+                total - passed
+              } Failures`}</p>
             </div>
             <div className="flex">
               <HashStraight size={12} className="my-[10px] mx-2" />
-              <p className="p-0 leading-3 my-3">{`${
-                successRate + successRate
-              } Total Attempts`}</p>
+              <p className="p-0 leading-3 my-3">{`${total} Total Attempts`}</p>
             </div>
           </div>
         </div>

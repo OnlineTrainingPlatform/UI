@@ -10,18 +10,36 @@ import { createQueryStatisticsListElements } from '../Util/createQueryStatistics
 const STATISTICS_PAGE_BREADCRUMB = 'Statistics Page';
 
 export const StatisticsPage = () => {
-  const [queries, setQueries] = useState<QueryStatistics[]>();
+  const [queries, setQueries] = useState<QueryStatistics[]>([
+    {
+      query_result: {
+        'N/A': {
+          passes: 0,
+          fails: 0,
+          total: 0,
+          pass_percentage: 0,
+        },
+      },
+      average_time: 0,
+      passed_total: {
+        passed: 0,
+        total: 0,
+      },
+    },
+  ]);
   const exercise = { title: 'Title of the exercise' };
 
-  const statisticsID = useParams();
+  const urlParam = useParams();
 
   useEffect(() => {
-    fetch(`api/v1/exercises/${statisticsID}/statistics`)
-      .then(async (res) => await res.json())
+    fetch(`/api/v1/exercises/${urlParam.exerciseID}/statistics`)
+      .then(async (res) => {
+        return await res.json();
+      })
       .then((data: QueryStatistics) => {
         setQueries([data]);
       });
-  }, [statisticsID]);
+  }, [urlParam]);
 
   return (
     <>
@@ -35,9 +53,14 @@ export const StatisticsPage = () => {
           createDisplayElements={createQueryStatisticsListElements}
           elements={queries}
         />
-        <div className="flex flex-col ml-24">
-          <PassedStatistics />
-          <HandInTimeStatistics />
+        <div className="flex flex-col ml-24 w-64 text-center">
+          <PassedStatistics
+            passed={!!queries[0] ? queries[0].passed_total.passed : 0}
+            total_passed={!!queries ? queries[0].passed_total.total : 0}
+          />
+          <HandInTimeStatistics
+            handinTime={!!queries[0] ? queries[0].average_time : 0}
+          />
         </div>
       </div>
     </>

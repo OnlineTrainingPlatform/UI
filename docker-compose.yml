@@ -54,11 +54,15 @@ services:
       - API_PREFIX=/api/v1
       - SUBMISSIONS_API_BASE_ROUTE=http://submissions:80
       - HOST=0.0.0.0
+    ports:
+      - 8081:80
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.statistics.rule=Path(`/api/v1/exercises/{exercise:([a-zA-Z0-9]+(-)*)+}/statistics`)"
       - "traefik.http.routers.statistics.entrypoints=web"
       - "traefik.docker.network=ui_edge"
+    networks:
+      - edge
 
   submissions:
     image: ghcr.io/onlinetrainingplatform/submissions:sha-97913ec

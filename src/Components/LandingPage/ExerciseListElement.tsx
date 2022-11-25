@@ -15,7 +15,7 @@ export const ExerciseListElement: React.FC<Props> = ({
   let navigate = useNavigate();
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {
-    navigate(`${e.currentTarget.id}/${exerciseID}`);
+    navigate(`exercises/${exerciseID}/${e.currentTarget.id}`);
   };
 
   return (
@@ -26,8 +26,8 @@ export const ExerciseListElement: React.FC<Props> = ({
       </div>
       <div className="space-x-4 pl-10 pt-12">
         <button
+          id=""
           type="button"
-          id="exercises"
           title="Go to exercises"
           onClick={handleClick}
           className="bg-white hover:bg-gray-100 text-gray-800"
