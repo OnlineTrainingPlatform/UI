@@ -23,6 +23,10 @@ export const ExercisePage = () => {
 
   const { exerciseID } = useParams();
 
+  /**
+   * Any time the exerciseID changes, fetch the related exercises.
+   * Happens initially when the value is taken from the url.
+   */
   useEffect(() => {
     if (!exerciseID) return;
     fetch(`/api/v1/exercises/${exerciseID}`)
@@ -32,6 +36,24 @@ export const ExercisePage = () => {
       });
   }, [exerciseID]);
 
+  /**
+   * Any time the verifierResult changes, create a list
+   */
+  useEffect(() => {
+    if (!verifierResult) return;
+    setQueries([]);
+
+    // For each query that has been through the verifier, we build a list of 
+    // objects with the query and its success/failure
+    for (const [key, value] of Object.entries(verifierResult.queryResults)) {
+      setQueries((prev) => [...prev, { query: key, result: value }]);
+    }
+  }, [verifierResult]);
+
+
+  /**
+   * A click on the 'verify queries' button triggers a verification.
+   */
   const handleVerifyClick = async () => {
     if (!exercise || !file) return;
     setQueries(exercise.queries);
@@ -55,6 +77,10 @@ export const ExercisePage = () => {
       .catch((error) => console.log(error));
   };
 
+
+  /**
+   * A click on 'submit solution' triggers a submission
+   */
   const handleSubmitClick = async () => {
     if (!exercise || !file) return;
 
@@ -80,14 +106,7 @@ export const ExercisePage = () => {
       });
   };
 
-  useEffect(() => {
-    if (!verifierResult) return;
-    setQueries([]);
-
-    for (const [key, value] of Object.entries(verifierResult.queryResults)) {
-      setQueries((prev) => [...prev, { query: key, result: value }]);
-    }
-  }, [verifierResult]);
+  
 
   return (
     <>
