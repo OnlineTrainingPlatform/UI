@@ -50,7 +50,6 @@ export const ExercisePage = () => {
     }
   }, [verifierResult]);
 
-
   // Custom functions (not hooks) --------------
   /**
    * A click on the 'verify queries' button triggers a verification.

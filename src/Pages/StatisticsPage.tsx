@@ -59,7 +59,7 @@ export const StatisticsPage = () => {
   return (
     <>
       <ExerciseTitle
-        title={!!exercise ? exercise.title : "loading..."}
+        title={!!exercise ? exercise.title : 'loading...'}
         breadcrumb={STATISTICS_PAGE_BREADCRUMB}
       />
       <div className="w-full flex flex-row h-5/6">
