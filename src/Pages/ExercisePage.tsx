@@ -43,7 +43,7 @@ export const ExercisePage = () => {
     if (!verifierResult) return;
     setQueries([]);
 
-    // For each query that has been through the verifier, we build a list of 
+    // For each query that has been through the verifier, we build a list of
     // objects with the query and its success/failure
     for (const [key, value] of Object.entries(verifierResult.queryResults)) {
       setQueries((prev) => [...prev, { query: key, result: value }]);
@@ -52,7 +52,6 @@ export const ExercisePage = () => {
 
 
   // Custom functions (not hooks) --------------
-
   /**
    * A click on the 'verify queries' button triggers a verification.
    */
@@ -78,7 +77,6 @@ export const ExercisePage = () => {
       })
       .catch((error) => console.log(error));
   };
-
 
   /**
    * A click on 'submit solution' triggers a submission
@@ -107,8 +105,6 @@ export const ExercisePage = () => {
         toast.error('Submission Failed');
       });
   };
-
-  
 
   return (
     <>
