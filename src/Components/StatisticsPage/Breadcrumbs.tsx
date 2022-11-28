@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export const Breadcrumbs = () => {
   const { exerciseID, statistics } = useParams();
@@ -8,7 +8,7 @@ export const Breadcrumbs = () => {
     <div>
       <nav>
         <Link to="/">Home</Link> |
-        <a href={`/exercises/${exerciseID}/`}>Exercise</a>
+        <a href={`/exercises/${exerciseID}/statistics`}>Statistics</a>
       </nav>
     </div>
   );

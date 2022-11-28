@@ -6,6 +6,7 @@ import { HandInTimeStatistics } from '../Components/StatisticsPage/HandInTimeSta
 import { PassedStatistics } from '../Components/StatisticsPage/PassedStatistics';
 import { QueryStatistics } from '../Datatypes/datatypes';
 import { createQueryStatisticsListElements } from '../Util/createQueryStatisticsListElements';
+import { Breadcrumbs } from '../Components/StatisticsPage/Breadcrumbs';
 
 const STATISTICS_PAGE_BREADCRUMB = 'Statistics Page';
 
@@ -47,6 +48,8 @@ export const StatisticsPage = () => {
         title={exercise.title}
         breadcrumb={STATISTICS_PAGE_BREADCRUMB}
       />
+      <Breadcrumbs />
+
       <div className="w-full flex flex-row h-5/6">
         <ScrollableList
           className="w-1/2"
