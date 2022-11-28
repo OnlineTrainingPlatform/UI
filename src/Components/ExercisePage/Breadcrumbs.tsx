@@ -7,7 +7,7 @@ export const Breadcrumbs = () => {
   return (
     <div>
       <nav>
-        <Link to="/">Home</Link> |
+        <Link to="/">Home</Link> /
         <a href={`/exercises/${exerciseID}/`}>Exercise</a>
       </nav>
     </div>
