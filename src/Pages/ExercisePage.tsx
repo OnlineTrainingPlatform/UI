@@ -109,18 +109,21 @@ export const ExercisePage = () => {
       {!exercise && <p>loading...</p>}
       {!!exercise && (
         <>
+          <div className='text-white'>
           <ExerciseTitle
             title={exercise.title}
             breadcrumb={EXERCISE_PAGE_BREADCRUMB}
           />
+          </div>
+
           <Breadcrumbs />
-          <div className="w-full flex flex-row h-4/6">
+          <div className="w-full flex flex-row h-4/6 text-white">
             <Description description={exercise.description} />
             <Solution file={file} setFile={setFile} />
             <div className="flex w-2/6 h-4/6 pr-6 pb-6 pl-6 flex-col">
               <h3 className="flex p-0 m-0 mb-2 font-light">Queries</h3>
               <ScrollableList
-                className="h-64"
+                className="h-64 text-white"
                 createDisplayElements={createQueryListElements}
                 elements={!!verifierResult ? queries : exercise.queries}
               />

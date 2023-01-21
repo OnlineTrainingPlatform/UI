@@ -22,7 +22,7 @@ export const ScrollableList: React.FC<Props> = ({
 
   return (
     <div
-      className={`font-mono mr-10 border-solid flex flex-col overflow-y-auto h-3/5 ${className}`}
+      className={`font-mono mr-10 border-solid flex flex-col overflow-y-auto h-4/5 ${className}`}
     >
       {list.map((displayElement: JSX.Element) => {
         return <div key={displayElement.key}>{displayElement}</div>;
