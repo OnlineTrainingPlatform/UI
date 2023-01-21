@@ -24,8 +24,7 @@ export const LandingPage = () => {
           </h3>
         </div>
         <div className="col-start-2 col-span-4 bg-[#111827] pl-10">
-        
-        <h3>Exercises</h3>
+          <h3>Exercises</h3>
           <ScrollableList
             createDisplayElements={createExerciseListElements}
             elements={exercises}
