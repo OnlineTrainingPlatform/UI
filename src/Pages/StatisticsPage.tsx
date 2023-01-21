@@ -45,14 +45,12 @@ export const StatisticsPage = () => {
   return (
     <>
       <div className="text-white">
-      <ExerciseTitle
-        title={exercise.title}
-        breadcrumb={STATISTICS_PAGE_BREADCRUMB}
-      />
-      <Breadcrumbs />
-
+        <ExerciseTitle
+          title={exercise.title}
+          breadcrumb={STATISTICS_PAGE_BREADCRUMB}
+        />
+        <Breadcrumbs />
       </div>
-
 
       <div className="w-full flex flex-row h-5/6 text-white">
         <ScrollableList
@@ -65,7 +63,7 @@ export const StatisticsPage = () => {
             passed={!!queries[0] ? queries[0].passed_total.passed : 0}
             total_passed={!!queries ? queries[0].passed_total.total : 0}
           />
-          <HandInTimeStatistics 
+          <HandInTimeStatistics
             handinTime={!!queries[0] ? queries[0].average_time : 0}
           />
         </div>

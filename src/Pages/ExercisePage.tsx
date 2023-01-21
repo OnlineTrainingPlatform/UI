@@ -109,11 +109,11 @@ export const ExercisePage = () => {
       {!exercise && <p>loading...</p>}
       {!!exercise && (
         <>
-          <div className='text-white'>
-          <ExerciseTitle
-            title={exercise.title}
-            breadcrumb={EXERCISE_PAGE_BREADCRUMB}
-          />
+          <div className="text-white">
+            <ExerciseTitle
+              title={exercise.title}
+              breadcrumb={EXERCISE_PAGE_BREADCRUMB}
+            />
           </div>
 
           <Breadcrumbs />

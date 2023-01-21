@@ -25,24 +25,24 @@ export const ExerciseListElement: React.FC<Props> = ({
         <p className="line-clamp-3">{description}</p>
       </div>
       <div className="grid content-center">
-        <div className ="pl-20">
-        <button
-          id=""
-          type="button"
-          title="Go to exercises"
-          onClick={handleClick}
-          className="bg-white hover:bg-gray-100 text-gray-800 w-2/5"
-        >
-          <Play size={32} />
-        </button>
-        <button
-          id="statistics"
-          title="Go to statsistics"
-          onClick={handleClick}
-          className="bg-white hover:bg-gray-100 text-gray-800 w-2/5"
-        >
-          <ChartBar size={32} />
-        </button>
+        <div className="pl-20">
+          <button
+            id=""
+            type="button"
+            title="Go to exercises"
+            onClick={handleClick}
+            className="bg-white hover:bg-gray-100 text-gray-800 w-2/5"
+          >
+            <Play size={32} />
+          </button>
+          <button
+            id="statistics"
+            title="Go to statsistics"
+            onClick={handleClick}
+            className="bg-white hover:bg-gray-100 text-gray-800 w-2/5"
+          >
+            <ChartBar size={32} />
+          </button>
         </div>
       </div>
     </div>
