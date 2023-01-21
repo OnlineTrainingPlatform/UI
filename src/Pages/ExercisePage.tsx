@@ -147,9 +147,9 @@ export const ExercisePage = () => {
                 <ScrollableList
                   createDisplayElements={createQueryListElements}
                   elements={!!verifierResult ? queries : exercise.queries}
-              />
+                />
               </div>
-            
+
               <div>
                 <button
                   onClick={handleVerifyClick}

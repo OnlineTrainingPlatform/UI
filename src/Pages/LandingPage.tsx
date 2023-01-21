@@ -19,9 +19,7 @@ export const LandingPage = () => {
       <div className="grid grid-rows-2 grid-cols-6 flex-wrap text-white">
         <div className="col-start-2 col-span-4 row-span-2 bg-[#111827] pl-10">
           <h1 className="">YourPAAL</h1>
-          <h3>
-            Your UPPAAl online training and assesment platform
-          </h3>
+          <h3>Your UPPAAl online training and assesment platform</h3>
         </div>
         <div className="col-start-2 col-span-4 bg-[#111827] pl-10">
           <h3>Exercises</h3>
