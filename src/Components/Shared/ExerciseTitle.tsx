@@ -6,8 +6,8 @@ interface Props {
 export const ExerciseTitle = ({ title, breadcrumb }: Props) => {
   return (
     <>
-      <h1 className="font-medium">{!title ? 'loading' : title}</h1>
-      <h3 className="font-light">{breadcrumb}</h3>
+      <h1 className="">{!title ? 'loading' : title}</h1>
+      <h3 className="">{breadcrumb}</h3>
     </>
   );
 };

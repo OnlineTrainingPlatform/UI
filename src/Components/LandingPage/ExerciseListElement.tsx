@@ -24,25 +24,25 @@ export const ExerciseListElement: React.FC<Props> = ({
         <h4>{title}</h4>
         <p className="line-clamp-3">{description}</p>
       </div>
-      <div className="grid content-center">
-        <div className ="pl-20">
-        <button
-          id=""
-          type="button"
-          title="Go to exercises"
-          onClick={handleClick}
-          className="bg-white hover:bg-gray-100 text-gray-800 w-2/5"
-        >
-          <Play size={32} />
-        </button>
-        <button
-          id="statistics"
-          title="Go to statsistics"
-          onClick={handleClick}
-          className="bg-white hover:bg-gray-100 text-gray-800 w-2/5"
-        >
-          <ChartBar size={32} />
-        </button>
+      <div className="grid gap-4 content-center">
+        <div className="pl-20">
+          <button
+            id=""
+            type="button"
+            title="Go to exercises"
+            onClick={handleClick}
+            className="text-xl w-2/5 bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent"
+          >
+            Solve Exercise
+          </button>
+          <button
+            id="statistics"
+            title="Go to statsistics"
+            onClick={handleClick}
+            className="text-xl w-2/5 bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent"
+          >
+            <ChartBar size={20} />
+          </button>
         </div>
       </div>
     </div>

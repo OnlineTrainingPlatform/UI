@@ -4,8 +4,8 @@ interface Props {
 
 export const Description = ({ description }: Props) => {
   return (
-    <div className="flex w-2/6 h-4/6 p-2 border-solid border-gray-700  bg-gray-200 overflow-y-auto">
-      <p className="p-0 m-0">{description}</p>
+    <div className="bg-[#111827] overflow-y-auto">
+      <p className="">{description}</p>
     </div>
   );
 };

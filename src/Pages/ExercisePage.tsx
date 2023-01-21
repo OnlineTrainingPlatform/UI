@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Description } from '../Components/ExercisePage/Description';
@@ -104,46 +104,70 @@ export const ExercisePage = () => {
       });
   };
 
+  let navigate = useNavigate();
+  const routeToStatistics = () => {
+    navigate(`statistics/`);
+  };
+  const handleRemoveFile = () => {
+    setFile(undefined);
+  };
+
   return (
     <>
       {!exercise && <p>loading...</p>}
       {!!exercise && (
         <>
-          <div className='text-white'>
-          <ExerciseTitle
-            title={exercise.title}
-            breadcrumb={EXERCISE_PAGE_BREADCRUMB}
-          />
-          </div>
-
-          <Breadcrumbs />
-          <div className="w-full flex flex-row h-4/6 text-white">
-            <Description description={exercise.description} />
-            <Solution file={file} setFile={setFile} />
-            <div className="flex w-2/6 h-4/6 pr-6 pb-6 pl-6 flex-col">
-              <h3 className="flex p-0 m-0 mb-2 font-light">Queries</h3>
-              <ScrollableList
-                className="h-64 text-white"
-                createDisplayElements={createQueryListElements}
-                elements={!!verifierResult ? queries : exercise.queries}
+          <div className="grid grid-rows-2 grid-cols-6 text-white">
+            <div className="col-start-1 col-span-2 pl-10 text-white">
+              <ExerciseTitle
+                title={exercise.title}
+                breadcrumb={EXERCISE_PAGE_BREADCRUMB}
               />
-              <div className="flex flex-row relative">
+              <Breadcrumbs />
+              <Description description={exercise.description} />
+
+              <button
+                onClick={routeToStatistics}
+                className="text-sm bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
+              >
+                View statistics
+              </button>
+            </div>
+
+            <div className="col-start-3 col-span-2">
+              <Solution file={file} setFile={setFile} />
+            </div>
+
+            <div>
+              <div className="bg-[#111827]">
+                <h3 className="">
+                  {' '}
+                  <b>Queries</b>
+                </h3>
+                <ScrollableList
+                  createDisplayElements={createQueryListElements}
+                  elements={!!verifierResult ? queries : exercise.queries}
+              />
+              </div>
+            
+              <div>
                 <button
                   onClick={handleVerifyClick}
-                  className="fixed flex right-28 bottom-1"
+                  className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
                 >
                   Run queries
                 </button>
                 <button
                   onClick={handleSubmitClick}
-                  className="fixed flex right-1 bottom-1"
+                  className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
                 >
                   Submit solution
                 </button>
               </div>
             </div>
+
+            <Toaster />
           </div>
-          <Toaster />
         </>
       )}
     </>

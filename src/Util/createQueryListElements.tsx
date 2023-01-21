@@ -14,7 +14,7 @@ export const createQueryListElements = (queries: Query[]) => {
       <QueryListElement
         key={elem.query}
         query={elem.query}
-        result={!!elem.result ? elem.result : false}
+        result={elem.result}
       />
     );
   });

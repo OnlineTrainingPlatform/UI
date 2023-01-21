@@ -4,13 +4,14 @@ import { ExerciseTitle } from '../Components/Shared/ExerciseTitle';
 import { ScrollableList } from '../Components/Shared/ScrollableList';
 import { HandInTimeStatistics } from '../Components/StatisticsPage/HandInTimeStatistics';
 import { PassedStatistics } from '../Components/StatisticsPage/PassedStatistics';
-import { QueryStatistics } from '../Datatypes/datatypes';
+import { Exercise, QueryStatistics } from '../Datatypes/datatypes';
 import { createQueryStatisticsListElements } from '../Util/createQueryStatisticsListElements';
 import { Breadcrumbs } from '../Components/StatisticsPage/Breadcrumbs';
 
 const STATISTICS_PAGE_BREADCRUMB = 'Statistics Page';
 
 export const StatisticsPage = () => {
+  const [exercise, setExercise] = useState<Exercise | undefined>();
   const [queries, setQueries] = useState<QueryStatistics[]>([
     {
       query_result: {
@@ -28,7 +29,6 @@ export const StatisticsPage = () => {
       },
     },
   ]);
-  const exercise = { title: 'Title of the exercise' };
 
   const urlParam = useParams();
 
@@ -42,17 +42,24 @@ export const StatisticsPage = () => {
       });
   }, [urlParam]);
 
+  useEffect(() => {
+    if (!urlParam.exerciseID) return;
+    fetch(`/api/v1/exercises/${urlParam.exerciseID}`)
+      .then(async (res) => await res.json())
+      .then((data) => {
+        setExercise(data);
+      });
+  }, [urlParam.exerciseID]);
+
   return (
     <>
       <div className="text-white">
-      <ExerciseTitle
-        title={exercise.title}
-        breadcrumb={STATISTICS_PAGE_BREADCRUMB}
-      />
-      <Breadcrumbs />
-
+        <ExerciseTitle
+          title={exercise && exercise.title}
+          breadcrumb={STATISTICS_PAGE_BREADCRUMB}
+        />
+        <Breadcrumbs />
       </div>
-
 
       <div className="w-full flex flex-row h-5/6 text-white">
         <ScrollableList
@@ -65,7 +72,7 @@ export const StatisticsPage = () => {
             passed={!!queries[0] ? queries[0].passed_total.passed : 0}
             total_passed={!!queries ? queries[0].passed_total.total : 0}
           />
-          <HandInTimeStatistics 
+          <HandInTimeStatistics
             handinTime={!!queries[0] ? queries[0].average_time : 0}
           />
         </div>

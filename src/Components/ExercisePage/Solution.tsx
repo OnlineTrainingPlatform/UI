@@ -1,4 +1,4 @@
-import { FileArrowUp, Plus } from 'phosphor-react';
+import { FileArrowUp, Plus, Trash } from 'phosphor-react';
 import { Dispatch, SetStateAction, useRef } from 'react';
 
 interface Props {
@@ -23,14 +23,33 @@ export const Solution = ({ file, setFile }: Props) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return undefined;
-    setFile(e.target.files[0]);
+    const file = e.target.files[0];
+    if (!file.name.endsWith('.xml')) {
+      alert('Only XML files are allowed');
+      return;
+    }
+    setFile(file);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    if (!e.dataTransfer.files) return;
+    const file = e.dataTransfer.files[0];
+    if (!file.name.endsWith('.xml')) {
+      alert('Only XML files are allowed');
+      return;
+    }
+    setFile(file);
   };
 
   return (
-    <div className="flex w-1/6 h-4/6 p-6">
+    <div>
+      <div className="grid place-items-center">Upload solution here</div>
       <div
-        className="w-32 h-32 border-dotted mt-10 m-auto hover:bg-slate-300 text-center relative"
+        className="w-32 h-32 border-dotted mt-5 m-auto hover:bg-blue-500 text-center relative"
         onClick={handleClick}
+        onDrop={handleDrop}
+        onDragOver={(e) => e.preventDefault()}
       >
         {!file ? (
           <Plus size={32} className="absolute top-12 right-12" />
@@ -44,6 +63,13 @@ export const Solution = ({ file, setFile }: Props) => {
           ref={hiddenFileInput}
           onChange={handleChange}
         />
+      </div>
+      <div className="grid place-items-center">
+        {file && (
+          <div>
+            <span className="text-xl">{file.name}</span>
+          </div>
+        )}
       </div>
     </div>
   );
