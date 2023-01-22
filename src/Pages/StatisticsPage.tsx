@@ -52,20 +52,19 @@ export const StatisticsPage = () => {
   }, [urlParam.exerciseID]);
 
   return (
-    <div className='bg-[#050C1B] h-screen grid grid-rows-4 grid-cols-6 text-white pl-10'>
-    <>
-      <div className="grid col-start-1 col-end-2 text-white">
-        <div className='grid col-start-1'>
-          <ExerciseTitle
-            title={exercise && exercise.title}
-            breadcrumb={STATISTICS_PAGE_BREADCRUMB}
-          />
-          <Breadcrumbs />
-
+    <div className="bg-[#050C1B] h-screen grid grid-rows-4 grid-cols-6 text-white pl-10">
+      <>
+        <div className="grid col-start-1 col-end-2 text-white">
+          <div className="grid col-start-1">
+            <ExerciseTitle
+              title={exercise && exercise.title}
+              breadcrumb={STATISTICS_PAGE_BREADCRUMB}
+            />
+            <Breadcrumbs />
+          </div>
         </div>
-      </div>
 
-      <div className='grid col-start-1 col-end-4'>
+        <div className="grid col-start-1 col-end-4">
           <ScrollableList
             className="h-5/5"
             createDisplayElements={createQueryStatisticsListElements}
@@ -73,21 +72,21 @@ export const StatisticsPage = () => {
           />
         </div>
 
-      <div className="grid col-start-4 col-end-6 row-start-2 gap-4 text-center text-white ">
-        <div className="grid col-start-5 h-48 w-48">
-          <PassedStatistics
-            passed={!!queries[0] ? queries[0].passed_total.passed : 0}
-            total_passed={!!queries ? queries[0].passed_total.total : 0}
-          />
-        </div>
+        <div className="grid col-start-4 col-end-6 row-start-2 gap-4 text-center text-white ">
+          <div className="grid col-start-5 h-48 w-48">
+            <PassedStatistics
+              passed={!!queries[0] ? queries[0].passed_total.passed : 0}
+              total_passed={!!queries ? queries[0].passed_total.total : 0}
+            />
+          </div>
 
-        <div className='grid col-start-6 h-48 w-48'>
-          <HandInTimeStatistics
-            handinTime={!!queries[0] ? queries[0].average_time : 0}
-          />
+          <div className="grid col-start-6 h-48 w-48">
+            <HandInTimeStatistics
+              handinTime={!!queries[0] ? queries[0].average_time : 0}
+            />
+          </div>
         </div>
-      </div>
-    </>
+      </>
     </div>
   );
 };

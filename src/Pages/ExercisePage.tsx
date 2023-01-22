@@ -123,7 +123,7 @@ export const ExercisePage = () => {
                 />
                 <Breadcrumbs />
                 <Description description={exercise.description} />
-                <div className='pt-5'>
+                <div className="pt-5">
                   <button
                     onClick={routeToStatistics}
                     className="text-sm bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
@@ -149,23 +149,23 @@ export const ExercisePage = () => {
                   />
                 </div>
 
-                <div className='pt-5 grid grid-cols-2 grid-rows-1 gap-x-8 gap-y-4'>
-                  <div className='grid'>
-                  <button
-                    onClick={handleVerifyClick}
-                    className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
-                  >
-                    Run queries
-                  </button>
+                <div className="pt-5 grid grid-cols-2 grid-rows-1 gap-x-8 gap-y-4">
+                  <div className="grid">
+                    <button
+                      onClick={handleVerifyClick}
+                      className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
+                    >
+                      Run queries
+                    </button>
                   </div>
 
-                  <div className='grid'>
-                  <button
-                    onClick={handleSubmitClick}
-                    className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
-                  >
-                    Submit solution
-                  </button>
+                  <div className="grid">
+                    <button
+                      onClick={handleSubmitClick}
+                      className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
+                    >
+                      Submit solution
+                    </button>
                   </div>
                 </div>
               </div>
