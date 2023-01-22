@@ -108,67 +108,72 @@ export const ExercisePage = () => {
   const routeToStatistics = () => {
     navigate(`statistics/`);
   };
-  const handleRemoveFile = () => {
-    setFile(undefined);
-  };
 
   return (
     <>
       {!exercise && <p>loading...</p>}
       {!!exercise && (
-        <>
-          <div className="grid grid-rows-2 grid-cols-6 text-white">
-            <div className="col-start-1 col-span-2 pl-10 text-white">
-              <ExerciseTitle
-                title={exercise.title}
-                breadcrumb={EXERCISE_PAGE_BREADCRUMB}
-              />
-              <Breadcrumbs />
-              <Description description={exercise.description} />
-
-              <button
-                onClick={routeToStatistics}
-                className="text-sm bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
-              >
-                View statistics
-              </button>
-            </div>
-
-            <div className="col-start-3 col-span-2">
-              <Solution file={file} setFile={setFile} />
-            </div>
-
-            <div>
-              <div className="bg-[#111827]">
-                <h3 className="">
-                  {' '}
-                  <b>Queries</b>
-                </h3>
-                <ScrollableList
-                  createDisplayElements={createQueryListElements}
-                  elements={!!verifierResult ? queries : exercise.queries}
-              />
+        <div className="bg-[#050C1B] h-screen">
+          <>
+            <div className="grid grid-rows-2 grid-cols-6 text-white">
+              <div className="col-start-1 col-span-2 pl-10 text-white">
+                <ExerciseTitle
+                  title={exercise.title}
+                  breadcrumb={EXERCISE_PAGE_BREADCRUMB}
+                />
+                <Breadcrumbs />
+                <Description description={exercise.description} />
+                <div className='pt-5'>
+                  <button
+                    onClick={routeToStatistics}
+                    className="text-sm bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
+                  >
+                    View statistics
+                  </button>
+                </div>
               </div>
-            
-              <div>
-                <button
-                  onClick={handleVerifyClick}
-                  className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
-                >
-                  Run queries
-                </button>
-                <button
-                  onClick={handleSubmitClick}
-                  className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
-                >
-                  Submit solution
-                </button>
-              </div>
-            </div>
 
-            <Toaster />
-          </div>
-        </>
+              <div className="grid col-start-3 col-span-2 pt-20">
+                <Solution file={file} setFile={setFile} />
+              </div>
+
+              <div className="grid content-center col-start-5 col-span-2 pr-10">
+                <div className="bg-[#111827]">
+                  <h3 className="">
+                    {' '}
+                    <b>Queries</b>
+                  </h3>
+                  <ScrollableList
+                    createDisplayElements={createQueryListElements}
+                    elements={!!verifierResult ? queries : exercise.queries}
+                  />
+                </div>
+
+                <div className='pt-5 grid grid-cols-2 grid-rows-1 gap-x-8 gap-y-4'>
+                  <div className='grid'>
+                  <button
+                    onClick={handleVerifyClick}
+                    className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
+                  >
+                    Run queries
+                  </button>
+                  </div>
+
+                  <div className='grid'>
+                  <button
+                    onClick={handleSubmitClick}
+                    className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
+                  >
+                    Submit solution
+                  </button>
+                  </div>
+                </div>
+              </div>
+
+              <Toaster />
+            </div>
+          </>
+        </div>
       )}
     </>
   );

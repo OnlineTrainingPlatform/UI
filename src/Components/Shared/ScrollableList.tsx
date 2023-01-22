@@ -21,7 +21,7 @@ export const ScrollableList: React.FC<Props> = ({
   const list: JSX.Element[] = createDisplayElements(elements);
 
   return (
-    <div className={`mr-10 flex flex-col overflow-y-auto h-4/5 ${className}`}>
+    <div className={`mr-10 flex flex-col overflow-y-auto h-5/5 ${className}`}>
       {list.map((displayElement: JSX.Element) => {
         return <div key={displayElement.key}>{displayElement}</div>;
       })}

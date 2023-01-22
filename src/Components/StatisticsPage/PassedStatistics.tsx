@@ -6,7 +6,7 @@ type Props = {
 export const PassedStatistics: React.FC<Props> = ({ passed, total_passed }) => {
   return (
     <div className="border-solid">
-      <div className="w-full p-8 pl-0">
+      <div className="">
         <h2>
           {total_passed === 0
             ? 'N/A'
