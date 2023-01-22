@@ -20,6 +20,7 @@ export const ExercisePage = () => {
   const [verifierResult, setVerifierResult] = useState<IVerifierResult>();
   const [queries, setQueries] = useState<Query[]>([]);
   const [file, setFile] = useState<File>();
+  const [isFileUploaded, setIsFileUploaded] = useState(false);
 
   const { exerciseID } = useParams();
 
@@ -109,6 +110,14 @@ export const ExercisePage = () => {
     navigate(`statistics/`);
   };
 
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const uploadedFile = event.target.files?.[0];
+    if (uploadedFile) {
+      setFile(uploadedFile);
+      setIsFileUploaded(true);
+    }
+  };
+
   return (
     <>
       {!exercise && <p>loading...</p>}
@@ -134,7 +143,11 @@ export const ExercisePage = () => {
               </div>
 
               <div className="grid col-start-3 col-span-2 pt-20">
-                <Solution file={file} setFile={setFile} />
+                <Solution
+                  file={file}
+                  setFile={setFile}
+                  setIsFileUploaded={setIsFileUploaded}
+                />
               </div>
 
               <div className="grid content-center col-start-5 col-span-2 pr-10">
@@ -152,17 +165,27 @@ export const ExercisePage = () => {
                 <div className="pt-5 grid grid-cols-2 grid-rows-1 gap-x-8 gap-y-4">
                   <div className="grid">
                     <button
+                      className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
+                        !isFileUploaded
+                          ? 'opacity-50 cursor-not-allowed'
+                          : 'opacity-100 cursor-pointer'
+                      }`}
+                      disabled={!isFileUploaded}
                       onClick={handleVerifyClick}
-                      className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
                     >
-                      Run queries
+                      Verify Queries
                     </button>
                   </div>
 
                   <div className="grid">
                     <button
+                      className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
+                        !isFileUploaded
+                          ? 'opacity-50 cursor-not-allowed'
+                          : 'opacity-100 cursor-pointer'
+                      }`}
+                      disabled={!isFileUploaded}
                       onClick={handleSubmitClick}
-                      className="text-xl bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
                     >
                       Submit solution
                     </button>

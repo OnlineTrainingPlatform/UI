@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction, useRef } from 'react';
 interface Props {
   file: File | undefined;
   setFile: Dispatch<SetStateAction<File | undefined>>;
+  setIsFileUploaded: Dispatch<SetStateAction<boolean>>;
 }
 
 /**
@@ -11,7 +12,7 @@ interface Props {
  * @param file a state variable that stores the locally selected file
  * @param setFile a setter function for the file state, above
  */
-export const Solution = ({ file, setFile }: Props) => {
+export const Solution = ({ file, setFile, setIsFileUploaded }: Props) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
@@ -28,6 +29,7 @@ export const Solution = ({ file, setFile }: Props) => {
       alert('Only XML files are allowed');
       return;
     }
+    setIsFileUploaded(true);
     setFile(file);
   };
 
@@ -39,6 +41,7 @@ export const Solution = ({ file, setFile }: Props) => {
       alert('Only XML files are allowed');
       return;
     }
+    setIsFileUploaded(true);
     setFile(file);
   };
 
