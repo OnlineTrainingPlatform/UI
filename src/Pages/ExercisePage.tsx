@@ -8,6 +8,7 @@ import { Exercise, Query } from '../Datatypes/datatypes';
 import { ScrollableList } from '../Components/Shared/ScrollableList';
 import { createQueryListElements } from '../Util/createQueryListElements';
 import { Breadcrumbs } from '../Components/ExercisePage/Breadcrumbs';
+import { RotatingLines } from 'react-loader-spinner';
 const EXERCISE_PAGE_BREADCRUMB = 'Exercise Page';
 
 interface IVerifierResult {
@@ -21,6 +22,8 @@ export const ExercisePage = () => {
   const [queries, setQueries] = useState<Query[]>([]);
   const [file, setFile] = useState<File>();
   const [isFileUploaded, setIsFileUploaded] = useState(false);
+  const [isLoadingVerify, setIsLoadingVerify] = useState(false);
+  const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
 
   const { exerciseID } = useParams();
 
@@ -55,6 +58,7 @@ export const ExercisePage = () => {
    * A click on the 'verify queries' button triggers a verification.
    */
   const handleVerifyClick = async () => {
+    setIsLoadingVerify(true);
     if (!exercise || !file) return;
     setQueries(exercise.queries);
 
@@ -74,6 +78,9 @@ export const ExercisePage = () => {
       .then((data) => {
         setVerifierResult(data);
       })
+      .then(() => {
+        setIsLoadingVerify(false);
+      })
       .catch((error) => console.log(error));
   };
 
@@ -81,6 +88,7 @@ export const ExercisePage = () => {
    * A click on 'submit solution' triggers a submission
    */
   const handleSubmitClick = async () => {
+    setIsLoadingSubmit(true);
     if (!exercise || !file) return;
 
     const body = {
@@ -98,6 +106,9 @@ export const ExercisePage = () => {
       .then((data) => {
         toast.success('Solution Submitted');
         console.log(data);
+      })
+      .then(() => {
+        setIsLoadingSubmit(false);
       })
       .catch((error) => {
         console.log(error);
@@ -120,7 +131,6 @@ export const ExercisePage = () => {
 
   return (
     <>
-      {!exercise && <p>loading...</p>}
       {!!exercise && (
         <div className="bg-[#050C1B] h-screen">
           <>
@@ -135,7 +145,7 @@ export const ExercisePage = () => {
                 <div className="pt-5">
                   <button
                     onClick={routeToStatistics}
-                    className="text-sm bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded"
+                    className="text-lg bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded h-10"
                   >
                     View statistics
                   </button>
@@ -165,7 +175,7 @@ export const ExercisePage = () => {
                 <div className="pt-5 grid grid-cols-2 grid-rows-1 gap-x-8 gap-y-4">
                   <div className="grid">
                     <button
-                      className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
+                      className={`text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded h-14 ${
                         !isFileUploaded
                           ? 'opacity-50 cursor-not-allowed'
                           : 'opacity-100 cursor-pointer'
@@ -173,13 +183,23 @@ export const ExercisePage = () => {
                       disabled={!isFileUploaded}
                       onClick={handleVerifyClick}
                     >
-                      Verify Queries
+                      {isLoadingVerify ? (
+                        <RotatingLines
+                          strokeColor="white"
+                          strokeWidth="5"
+                          animationDuration="0.75"
+                          width="40"
+                          visible={true}
+                        />
+                      ) : (
+                        'Verify Queries'
+                      )}
                     </button>
                   </div>
 
                   <div className="grid">
                     <button
-                      className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
+                      className={`text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded h-14 ${
                         !isFileUploaded
                           ? 'opacity-50 cursor-not-allowed'
                           : 'opacity-100 cursor-pointer'
@@ -187,7 +207,17 @@ export const ExercisePage = () => {
                       disabled={!isFileUploaded}
                       onClick={handleSubmitClick}
                     >
-                      Submit solution
+                      {isLoadingSubmit ? (
+                        <RotatingLines
+                          strokeColor="white"
+                          strokeWidth="5"
+                          animationDuration="0.75"
+                          width="40"
+                          visible={true}
+                        />
+                      ) : (
+                        'Submit Solution'
+                      )}
                     </button>
                   </div>
                 </div>
